@@ -1,15 +1,148 @@
+<head>
+  <style>
+    @font-face {
+    font-family: DSEG;
+    src: url(DSEG7Classic-BoldItalic.ttf);
+  }
+  @font-face {font-family: "Komika";
+  src: url(komika_jam-italic.ttf);
+  </style>
+  <script>
+  var date = "";
+  var hour = "";
+  var min = "";
+  var sec = "";
+  var day = "";
+  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  var am = 0;
+  function timeset() {
+    date = new Date();
+    /////////////
+    sec = date.getSeconds();
+    if (sec < 10) {
+      sec = "0" + sec
+    } else {
+      sec = date.getSeconds();
+    }
+    /////////////
+    min = date.getMinutes();
+    if (min < 10) {
+      min = "0" + min
+    } else {
+      min = date.getMinutes();
+    }
+    /////////////
+    hour = date.getHours();
+    if (hour > 12) {
+      hour -= 12
+      am = 0
+    } else {
+      hour = date.getHours();
+      am = 1
+    }
+    
+    if (hour < 10) {
+      hour = "0" + hour
+    } else {
+      min = date.getHours();
+    }
+    /////////////
+    day = weekday[date.getDay()];
+
+    
+    document.getElementById("time").innerText = + hour + " " + min;
+    document.getElementById("seconds").innerText = sec;
+    document.getElementById("day").innerText = day;
+    
+    if (am === 1) {
+      document.getElementById("am").innerText = "AM";
+    } else {
+      document.getElementById("am").innerText = "PM";
+    }
+  }
+  
+      const interval = setInterval(function() {
+   timeset();
+  }, 50);
+  </script>
+</head>
 <body style="
       background-image:url(loading.png);
+      //background: rgb(2,128,205);
+      //background: radial-gradient(circle, rgba(2,128,205,1) 0%, rgba(0,82,155,1) 80%);
       font-size:24px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      background-attachment: fixed;">
-  <img src="time.png" style="
+      background-attachment: fixed;
+      color: rgba(244, 244, 255, 0.8);
+      ">
+  <div style="
+    position: absolute;
+    width: 15vw;
+    height: 15vw;
+    background: rgb(55,135,163);
+    background: radial-gradient(circle, rgba(55,135,163,1) 0%, rgba(46,112,140,1) 60%);
+    z-index: -1;
+    left: 38vw;
+    top: calc(50vh - 10vw);
+  ">
+    <p id="am" style ="
+      font-family: Komika;
+      font-size:3vw;
+      margin-left:23.5vw;
+      margin-top:5vh;
+      z-index: 2;
+      position:
+    ">D!</p>
+  </div>
+  <div style="
+    position: absolute;
+    left: calc(50vw - 7.5vw);
+  ">
+    <div style="
       display: block;
-      margin: auto;
+      margin-left: -25%;
+      margin-top:calc(20vh - 7.5vw);
       width: 15vw;
       height: 15vw;
-      margin-top:calc(50vh - 7.5vw);
-      ">
+      zoom: 245%;
+    ">
+    <img src="reg_clock.png" style="
+        width: 100%;
+        height: auto;
+    ">
+    <p id="time" style="
+      left: 50%;
+      top: 50%;
+      font-family: DSEG;
+      font-size: 1.4vw;
+      transform: translate(1.3em, -7.5em) scale(.85, 1.24) skew(-4deg) rotate(.5deg);
+    ">peni</p>
+    <p id="seconds" style="
+      left: 50%;
+      top: 50%;
+      font-family: DSEG;
+      font-size: .75vw;
+      transform: translate(7.5em, -17.95em) scale(.9, 1) skew(-4deg) rotate(1deg);
+    ">sw</p>
+    <p id="day" style="
+      left: 50%;
+      top: 50%;
+      font-family: Komika;
+      
+      font-size: .75vw;
+      transform: translate(4em, -16.8em) scale(.9, .85) skew(0deg) rotate(4deg);
+    ">ORL</p>
+  </div></div>
+  
+  <div id="extras" style="
+    font-family: Komika;
+    font-size:12px;
+    position: absolute;
+    top: calc(100vh - 24px);
+    color:rgba(255, 255, 255, 0.6);
+  ">
+    <p style="margin:0px;padding:0px;">made with love by <a href="https://dirt.cool/"style="color:inherit;">cupofdirtfordinner</a></p>
+  </div>
 </body>
